@@ -1,0 +1,6 @@
+README.md
+setup.py
+lfi.egg-info/PKG-INFO
+lfi.egg-info/SOURCES.txt
+lfi.egg-info/dependency_links.txt
+lfi.egg-info/top_level.txt
