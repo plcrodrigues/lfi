@@ -3,8 +3,8 @@ import math
 import torch
 from torch.nn import functional as F
 
-import utils
-from nsf import transforms
+from lfi import utils
+from lfi.nsf import transforms
 
 DEFAULT_MIN_BIN_WIDTH = 1e-3
 DEFAULT_MIN_BIN_HEIGHT = 1e-3

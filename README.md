@@ -28,9 +28,9 @@ To use SNPE-C with Nonlinear Gaussian simulator:
 ```python
 import torch
 
-import inference
-import simulators
-import utils
+from lfi import inference
+from lfi import simulators
+from lfi import utils
 
 from matplotlib import pyplot as plt
 
@@ -85,9 +85,9 @@ To use SNL with M/G/1 simulator:
 ```python
 import torch
 
-import inference
-import simulators
-import utils
+from lfi import inference
+from lfi import simulators
+from lfi import utils
 
 from matplotlib import pyplot as plt
 
@@ -140,9 +140,9 @@ To use SRE with the Lotka-Volterra simulator:
 ```python
 import torch
 
-import inference
-import simulators
-import utils
+from lfi import inference
+from lfi import simulators
+from lfi import utils
 
 from matplotlib import pyplot as plt
 

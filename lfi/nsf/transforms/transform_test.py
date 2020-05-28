@@ -1,7 +1,7 @@
 import torch
 import torchtestcase
 
-from nsf.transforms import base
+from lfi.nsf.transforms import base
 
 
 class TransformTest(torchtestcase.TorchTestCase):

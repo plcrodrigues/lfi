@@ -3,9 +3,9 @@
 import torch
 import unittest
 
-from nsf.transforms import base
-from nsf.transforms import normalization as norm
-from nsf.transforms.transform_test import TransformTest
+from lfi.nsf.transforms import base
+from lfi.nsf.transforms import normalization as norm
+from lfi.nsf.transforms.transform_test import TransformTest
 
 
 class BatchNormTest(TransformTest):

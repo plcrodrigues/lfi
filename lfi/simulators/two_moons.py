@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 
-import utils
+from lfi import utils
 
 from matplotlib import pyplot as plt
 

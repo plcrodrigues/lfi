@@ -3,11 +3,11 @@
 import numpy as np
 import torch
 
-import utils
+from lfi import utils
 
 from torch import nn
 
-from nsf import distributions
+from lfi.nsf import distributions
 
 
 class StandardNormal(distributions.Distribution):

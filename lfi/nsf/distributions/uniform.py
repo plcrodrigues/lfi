@@ -4,7 +4,7 @@ import torch
 from matplotlib import pyplot as plt
 from torch import distributions
 
-import utils
+from lfi import utils
 
 
 class TweakedUniform(distributions.Uniform):

@@ -3,7 +3,7 @@ import os
 import pickle
 import torch
 
-import utils
+from lfi import utils
 
 from .simulator import Simulator
 from summarizers import MG1Summarizer

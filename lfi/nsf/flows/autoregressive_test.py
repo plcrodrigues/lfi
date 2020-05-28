@@ -4,7 +4,7 @@ import torch
 import torchtestcase
 import unittest
 
-from nsf.flows import autoregressive as ar
+from lfi.nsf.flows import autoregressive as ar
 
 
 class MaskedAutoregressiveFlowTest(torchtestcase.TorchTestCase):

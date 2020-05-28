@@ -5,9 +5,9 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 
-import utils
+from lfi import utils
 
-from nsf import transforms
+from lfi.nsf import transforms
 
 
 # class BatchNorm(transforms.Transform):

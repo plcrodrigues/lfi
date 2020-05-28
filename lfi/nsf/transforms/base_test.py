@@ -4,9 +4,9 @@ import unittest
 import numpy as np
 import torch
 
-from nsf.transforms import base
-from nsf.transforms import standard
-from nsf.transforms.transform_test import TransformTest
+from lfi.nsf.transforms import base
+from lfi.nsf.transforms import standard
+from lfi.nsf.transforms.transform_test import TransformTest
 
 
 class CompositeTransformTest(TransformTest):

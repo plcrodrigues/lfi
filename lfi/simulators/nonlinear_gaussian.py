@@ -3,11 +3,11 @@ import scipy.stats
 import os
 import torch
 
-import utils
+from lfi import utils
 
 from matplotlib import pyplot as plt
 
-from mcmc import SliceSampler
+from lfi.mcmc import SliceSampler
 from .simulator import Simulator
 
 parameter_dim = 5
@@ -298,4 +298,4 @@ def main():
 # print(log_prob)
 # import torch
 # from torch import distributions
-# import utils
+# from lfi import utils

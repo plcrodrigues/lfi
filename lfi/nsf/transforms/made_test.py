@@ -4,7 +4,7 @@ import torch
 import torchtestcase
 import unittest
 
-from nsf.transforms import made
+from lfi.nsf.transforms import made
 
 
 class ShapeTest(torchtestcase.TorchTestCase):

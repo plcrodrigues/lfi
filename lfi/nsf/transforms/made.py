@@ -3,7 +3,7 @@
 
 import torch
 
-import utils
+from lfi import utils
 
 from torch import nn
 from torch.nn import functional as F, init

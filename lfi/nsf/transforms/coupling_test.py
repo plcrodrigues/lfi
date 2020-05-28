@@ -3,11 +3,11 @@
 import torch
 import unittest
 
-from nn_ import nets as nn_
-import utils
+from lfi.nn_ import nets as nn_
+from lfi import utils
 
-from nsf.transforms import coupling
-from nsf.transforms.transform_test import TransformTest
+from lfi.nsf.transforms import coupling
+from lfi.nsf.transforms.transform_test import TransformTest
 
 
 def create_coupling_transform(cls, shape, **kwargs):

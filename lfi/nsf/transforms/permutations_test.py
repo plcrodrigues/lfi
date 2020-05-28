@@ -3,8 +3,8 @@
 import torch
 import unittest
 
-from nsf.transforms import permutations
-from nsf.transforms.transform_test import TransformTest
+from lfi.nsf.transforms import permutations
+from lfi.nsf.transforms.transform_test import TransformTest
 
 
 class PermutationTest(TransformTest):

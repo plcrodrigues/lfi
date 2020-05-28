@@ -4,7 +4,7 @@ import torch
 
 from torch import nn
 
-import utils
+from lfi import utils
 
 
 class NoMeanException(Exception):

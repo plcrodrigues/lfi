@@ -1,9 +1,9 @@
 """Implementations of permutation-like transforms."""
 
 import torch
-import utils
+from lfi import utils
 
-from nsf import transforms
+from lfi.nsf import transforms
 
 
 class Permutation(transforms.Transform):

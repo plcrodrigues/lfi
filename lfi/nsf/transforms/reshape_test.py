@@ -1,8 +1,8 @@
 import torch
 import unittest
 
-from nsf.transforms.transform_test import TransformTest
-from nsf import transforms
+from lfi.nsf.transforms.transform_test import TransformTest
+from lfi.nsf import transforms
 
 
 class SqueezeTransformTest(TransformTest):

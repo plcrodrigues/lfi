@@ -3,7 +3,7 @@
 import torch
 import torchtestcase
 import unittest
-from nsf.distributions import discrete
+from lfi.nsf.distributions import discrete
 
 
 class ConditionalIndependentBernoulliTest(torchtestcase.TorchTestCase):

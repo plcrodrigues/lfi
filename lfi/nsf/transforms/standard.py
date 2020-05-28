@@ -1,7 +1,7 @@
 """Implementations of some standard transforms."""
 
 import torch
-from nsf import transforms
+from lfi.nsf import transforms
 
 
 class IdentityTransform(transforms.Transform):

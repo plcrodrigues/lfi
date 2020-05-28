@@ -1,8 +1,8 @@
 import torch
 import unittest
 
-from nsf import transforms
-from nsf.transforms.transform_test import TransformTest
+from lfi.nsf import transforms
+from lfi.nsf.transforms.transform_test import TransformTest
 
 
 class OneByOneConvolutionTest(TransformTest):

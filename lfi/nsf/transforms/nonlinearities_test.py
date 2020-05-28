@@ -3,9 +3,8 @@
 import torch
 import unittest
 
-import nsf.transforms.splines.quadratic
-from nsf.transforms import base, nonlinearities as nl, standard
-from nsf.transforms.transform_test import TransformTest
+from lfi.nsf.transforms import base, nonlinearities as nl, standard
+from lfi.nsf.transforms.transform_test import TransformTest
 
 
 class TanhTest(TransformTest):

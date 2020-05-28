@@ -4,8 +4,8 @@ import numpy as np
 import torch
 import unittest
 
-from nsf.transforms import standard
-from nsf.transforms.transform_test import TransformTest
+from lfi.nsf.transforms import standard
+from lfi.nsf.transforms.transform_test import TransformTest
 
 
 class IdentityTransformTest(TransformTest):

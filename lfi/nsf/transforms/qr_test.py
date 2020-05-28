@@ -1,10 +1,10 @@
 import torch
 import unittest
 
-import utils
+from lfi import utils
 
-from nsf.transforms import qr
-from nsf.transforms.transform_test import TransformTest
+from lfi.nsf.transforms import qr
+from lfi.nsf.transforms.transform_test import TransformTest
 
 
 class QRLinearTest(TransformTest):

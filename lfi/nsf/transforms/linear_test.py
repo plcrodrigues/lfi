@@ -5,11 +5,11 @@ import unittest
 
 from unittest.mock import MagicMock
 
-import utils
+from lfi import utils
 
-from nsf.transforms import linear
-from nsf.transforms.transform_test import TransformTest
-from nsf.transforms.linear import Linear
+from lfi.nsf.transforms import linear
+from lfi.nsf.transforms.transform_test import TransformTest
+from lfi.nsf.transforms.linear import Linear
 
 
 class LinearTest(TransformTest):

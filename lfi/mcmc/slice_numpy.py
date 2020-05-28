@@ -175,7 +175,7 @@ class SliceSampler(MCMCSampler):
 
 def test_():
     from scipy import stats
-    import utils
+    from lfi import utils
     from matplotlib import pyplot as plt
 
     mean = np.zeros(2)

@@ -3,7 +3,7 @@ import os
 import pickle
 import torch
 
-import utils
+from lfi import utils
 
 from summarizers import LotkaVolterraSummarizer
 from .simulator import Simulator

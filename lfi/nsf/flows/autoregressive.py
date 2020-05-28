@@ -2,9 +2,9 @@
 
 from torch.nn import functional as F
 
-from nsf import distributions
-from nsf import flows
-from nsf import transforms
+from lfi.nsf import distributions
+from lfi.nsf import flows
+from lfi.nsf import transforms
 
 
 class MaskedAutoregressiveFlow(flows.Flow):

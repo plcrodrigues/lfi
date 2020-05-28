@@ -3,7 +3,7 @@
 import numpy as np
 import torch
 
-import utils
+from lfi import utils
 
 
 def tile(x, n):

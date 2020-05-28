@@ -1,5 +1,5 @@
-import utils
-from nsf import transforms
+from lfi import utils
+from lfi.nsf import transforms
 
 
 class OneByOneConvolution(transforms.LULinear):

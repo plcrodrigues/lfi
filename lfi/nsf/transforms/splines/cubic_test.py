@@ -1,7 +1,7 @@
 import torch
 import torchtestcase
 
-from nsf.transforms import splines
+from lfi.nsf.transforms import splines
 
 
 class CubicSplineTest(torchtestcase.TorchTestCase):

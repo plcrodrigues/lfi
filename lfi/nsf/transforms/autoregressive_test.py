@@ -3,8 +3,8 @@
 import torch
 import unittest
 
-from nsf.transforms import autoregressive
-from nsf.transforms.transform_test import TransformTest
+from lfi.nsf.transforms import autoregressive
+from lfi.nsf.transforms.transform_test import TransformTest
 
 
 class MaskedAffineAutoregressiveTransformTest(TransformTest):

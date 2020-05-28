@@ -4,9 +4,9 @@ import torch
 
 from torch.nn import functional as F
 
-import utils
+from lfi import utils
 
-from nsf import distributions
+from lfi.nsf import distributions
 
 
 class ConditionalIndependentBernoulli(distributions.Distribution):

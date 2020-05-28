@@ -1,8 +1,8 @@
 """Basic definitions for the flows module."""
 
-import utils
+from lfi import utils
 
-from nsf import distributions
+from lfi.nsf import distributions
 
 
 class Flow(distributions.Distribution):

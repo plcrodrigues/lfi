@@ -3,7 +3,7 @@
 import torch
 import torchtestcase
 import unittest
-from nsf.distributions import normal
+from lfi.nsf.distributions import normal
 
 
 class StandardNormalTest(torchtestcase.TorchTestCase):

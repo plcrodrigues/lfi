@@ -3,10 +3,10 @@
 import torch
 import unittest
 
-import utils
+from lfi import utils
 
-from nsf.transforms import orthogonal
-from nsf.transforms.transform_test import TransformTest
+from lfi.nsf.transforms import orthogonal
+from lfi.nsf.transforms.transform_test import TransformTest
 
 
 class HouseholderSequenceTest(TransformTest):

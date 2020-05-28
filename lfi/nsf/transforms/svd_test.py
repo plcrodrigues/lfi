@@ -1,10 +1,10 @@
 import torch
 import unittest
 
-import utils
+from lfi import utils
 
-from nsf.transforms import svd
-from nsf.transforms.transform_test import TransformTest
+from lfi.nsf.transforms import svd
+from lfi.nsf.transforms.transform_test import TransformTest
 
 
 class SVDLinearTest(TransformTest):

@@ -4,8 +4,8 @@ import torch
 from torch import nn
 from torch.nn import functional as F, init
 
-from nsf import transforms
-from nsf.transforms.linear import Linear
+from lfi.nsf import transforms
+from lfi.nsf.transforms.linear import Linear
 
 
 class QRLinear(Linear):

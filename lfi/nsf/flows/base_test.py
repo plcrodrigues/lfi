@@ -3,9 +3,9 @@
 import torch
 import torchtestcase
 import unittest
-from nsf import transforms
-from nsf import distributions
-from nsf.flows import base
+from lfi.nsf import transforms
+from lfi.nsf import distributions
+from lfi.nsf.flows import base
 
 
 class FlowTest(torchtestcase.TorchTestCase):
