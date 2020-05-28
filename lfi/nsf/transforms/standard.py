@@ -57,13 +57,22 @@ class AffineTransform(transforms.Transform):
     def __init__(self, shift=None, scale=None):
         super().__init__()
 
+        if shift is None:            
+            tensor_shift = torch.tensor(0.0)
+        else:
+            tensor_shift = shift.clone().detach()        
         self.register_buffer(
-            "_shift", torch.tensor(shift if (shift is not None) else 0.0)
-        )
-        self.register_buffer(
-            "_scale", torch.tensor(scale if (scale is not None) else 1.0)
+            "_shift", tensor_shift
         )
 
+        if scale is None:            
+            tensor_scale = torch.tensor(1.0)
+        else:
+            tensor_scale = scale.clone().detach()        
+        self.register_buffer(
+            "_scale", tensor_scale
+        )
+        
     @property
     def _log_scale(self):
         return torch.log(torch.abs(self._scale))

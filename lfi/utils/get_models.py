@@ -1,3 +1,4 @@
+import torch
 from torch import nn
 from torch.nn import functional as F
 
@@ -65,7 +66,7 @@ def get_neural_posterior(model, parameter_dim, observation_dim, simulator):
                             num_blocks=2,
                             use_residual_blocks=False,
                             random_mask=False,
-                            activation=F.tanh,
+                            activation=torch.tanh,
                             dropout_probability=0.0,
                             use_batch_norm=True,
                         ),
@@ -207,7 +208,7 @@ def get_neural_likelihood(model, parameter_dim, observation_dim):
                             num_blocks=2,
                             use_residual_blocks=False,
                             random_mask=False,
-                            activation=F.tanh,
+                            activation=torch.tanh,
                             dropout_probability=0.0,
                             use_batch_norm=True,
                         ),
