@@ -1,0 +1,20 @@
+# Cython generation:
+*.cpp
+*.so
+*.o
+*.c
+*.html
+lfi.egg-info/*
+.eggs/*
+# Python precompilation
+*pyc
+
+
+# cache
+.pytest_cache/*
+
+coverage/*
+.coverage
+
+.DS_Store
+MANIFEST
