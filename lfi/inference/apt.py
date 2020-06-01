@@ -101,6 +101,7 @@ class APT:
             self._summary_net = nn.Identity()
         else:
             self._summary_net = summary_net
+            self._summary_bank = []
 
         self._mcmc_method = mcmc_method
         self._train_with_mcmc = train_with_mcmc
@@ -111,14 +112,14 @@ class APT:
         # the potential function requires evaluating a neural likelihood as is the
         # case here.
         self._potential_function = NeuralPotentialFunction(
-            neural_posterior, prior, self._true_observation
+            neural_posterior, prior, self._summary_net(self._true_observation)
         )
 
         # Axis-aligned slice sampling implementation in NumPy
         target_log_prob = (
             lambda parameters: self._neural_posterior.log_prob(
                 inputs=torch.Tensor(parameters).reshape(1, -1),
-                context=self._true_observation.reshape(1, -1),
+                context=self._summary_net(self._true_observation).reshape(1, -1),
             ).item()
             if not np.isinf(self._prior.log_prob(torch.Tensor(parameters)).sum().item())
             else -np.inf
@@ -218,6 +219,8 @@ class APT:
             # Store models at end of each round.
             self._model_bank.append(deepcopy(self._neural_posterior))
             self._model_bank[-1].eval()
+            self._summary_bank.append(deepcopy(self._summary_net))
+            self._summary_bank[-1].eval()
 
             # Update description for progress bar.
             round_description = (
@@ -263,7 +266,7 @@ class APT:
 
             # Generate samples from posterior.
             candidate_samples = self._neural_posterior.sample(
-                max(10000, num_samples), context=true_observation.reshape(1, -1)
+                max(10000, num_samples), context=self._summary_net(true_observation).reshape(1, -1)
             ).squeeze(0)
 
             # Evaluate posterior samples under the prior.
@@ -532,6 +535,7 @@ class APT:
 
             # Train for a single epoch.
             self._neural_posterior.train()
+            self._summary_net.train()
             for batch in train_loader:
                 optimizer.zero_grad()
                 inputs, context, masks = (
@@ -553,6 +557,7 @@ class APT:
 
             # Calculate validation performance.
             self._neural_posterior.eval()
+            self._summary_net.eval()
             log_prob_sum = 0
             with torch.no_grad():
                 for batch in val_loader:
@@ -561,7 +566,8 @@ class APT:
                         batch[1].to(device),
                         batch[2].to(device),
                     )
-                    log_prob = _get_log_prob_proposal_posterior(inputs, context, masks)
+                    summarized_context = self._summary_net(context)
+                    log_prob = _get_log_prob_proposal_posterior(inputs, summarized_context, masks)
                     log_prob_sum += log_prob.sum().item()
             validation_log_prob = log_prob_sum / num_validation_examples
 
@@ -570,12 +576,14 @@ class APT:
                 best_validation_log_prob = validation_log_prob
                 epochs_since_last_improvement = 0
                 best_model_state_dict = deepcopy(self._neural_posterior.state_dict())
+                best_summary_state_dict = deepcopy(self._summary_net.state_dict())
             else:
                 epochs_since_last_improvement += 1
 
             # If no validation improvement over many epochs, stop training.
             if epochs_since_last_improvement > stop_after_epochs - 1:
                 self._neural_posterior.load_state_dict(best_model_state_dict)
+                self._summary_net.load_state_dict(best_summary_state_dict)
                 break
 
         # Update summary.
@@ -600,13 +608,14 @@ class APT:
 
         # Always sample in eval mode.
         self._neural_posterior.eval()
+        self._summary_net.eval()
 
         total_num_accepted_samples, total_num_generated_samples = 0, 0
         while total_num_generated_samples < num_samples:
 
             # Generate samples from posterior.
             candidate_samples = self._neural_posterior.sample(
-                10000, context=true_observation.reshape(1, -1)
+                10000, context=self._summary_net(true_observation).reshape(1, -1)
             ).squeeze(0)
 
             # Evaluate posterior samples under the prior.
@@ -623,6 +632,7 @@ class APT:
 
         # Back to training mode.
         self._neural_posterior.train()
+        self._summary_net.train()
 
         return total_num_accepted_samples / total_num_generated_samples
 
@@ -646,7 +656,7 @@ class APT:
         median_observation_distance = torch.median(
             torch.sqrt(
                 torch.sum(
-                    (self._observation_bank[-1] - self._true_observation.reshape(1, -1))
+                    (self._summary_net(self._observation_bank[-1]) - self._summary_net(self._true_observation).reshape(1, -1))
                     ** 2,
                     dim=-1,
                 )
