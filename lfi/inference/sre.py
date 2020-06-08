@@ -18,13 +18,14 @@ from tqdm import tqdm
 from lfi.mcmc import Slice, SliceSampler
 
 
-if torch.cuda.is_available():
-    device = torch.device("cuda")
-    torch.set_default_tensor_type("torch.cuda.FloatTensor")
-else:
-    device = torch.device("cpu")
-    torch.set_default_tensor_type("torch.FloatTensor")
-
+# if torch.cuda.is_available():
+#     device = torch.device("cuda")
+#     torch.set_default_tensor_type("torch.cuda.FloatTensor")
+# else:
+#     device = torch.device("cpu")
+#     torch.set_default_tensor_type("torch.FloatTensor")
+device = torch.device("cpu")
+torch.set_default_tensor_type("torch.FloatTensor")
 
 class SRE:
     """
