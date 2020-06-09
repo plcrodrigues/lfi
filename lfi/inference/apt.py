@@ -545,6 +545,11 @@ class APT:
             # Train for a single epoch.
             self._neural_posterior.train()
             self._summary_net.train()
+            
+            # Move to GPU if needed
+            self._neural_posterior.to(self._device)
+            self._summary_net.to(self._device)
+
             for batch in train_loader:
                 optimizer.zero_grad()
                 inputs, context, masks = (
