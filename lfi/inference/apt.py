@@ -40,6 +40,7 @@ class APT:
         retrain_from_scratch_each_round=False,
         discard_prior_samples=False,
         summary_writer=None,
+        label=None,
         device='cpu'
     ):
         """
@@ -82,6 +83,7 @@ class APT:
         self._true_observation = true_observation
         self._neural_posterior = neural_posterior
         self._device = device
+        self._label = label
 
         assert isinstance(num_atoms, int), "Number of atoms must be an integer."
         self._num_atoms = num_atoms
@@ -160,7 +162,7 @@ class APT:
             "rejection-sampling-acceptance-rates": [],
         }
 
-    def run_inference(self, num_rounds, num_simulations_per_round):
+    def run_inference(self, num_rounds, num_simulations_per_round, save_rounds=False):
         """
         This runs APT for num_rounds rounds, using num_simulations_per_round calls to
         the simulator per round.
@@ -226,6 +228,20 @@ class APT:
 
             # Update tensorboard and summary dict.
             self._summarize(round_)
+            
+            if save_rounds:
+
+                folderpath = os.path.join(os.getcwd(), 'results', self._label) + os.sep
+                if not(os.path.isdir(folderpath)):
+                    os.makedirs(folderpath)                
+
+                nn_posterior_round = self._model_bank[-1]
+                path = folderpath + 'nn_posterior_round_' + str(round_+1).zfill(2) + '.pkl'
+                torch.save(nn_posterior_round.state_dict(), path)
+
+                nn_summary_round = self._summary_bank[-1]
+                path = folderpath + 'nn_summary_round_' + str(round_+1).zfill(2) + '.pkl'
+                torch.save(nn_summary_round.state_dict(), path)                
 
     def sample_posterior(self, num_samples, true_observation=None):
         """
